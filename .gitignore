@@ -8,8 +8,12 @@ __pycache__/
 .slurm/
 .demo/
 
+
+.env/ 
+env/ 
 wandb/
 tmp/
+
 
 assets/checkpoints/
 assets/data/
