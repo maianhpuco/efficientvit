@@ -646,7 +646,8 @@ def main():
         args.gtFine_path =  config.get('gtFine_path')
         
         args.path = os.path.join(args.leftImg8bit_path, 'val')
-         
+    else:
+        print("Cannot find the config file") 
     print("--> path", args.path) 
     
     if args.gpu == "all":
