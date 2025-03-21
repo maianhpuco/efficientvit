@@ -638,17 +638,17 @@ def main():
     parser.add_argument("--save_path", type=str, default=None)
 
     args = parser.parse_args()
+    config_file_path = os.path.join(PROJECT_DIR, '/configs/{args.config_file}.yaml') 
     
-    if os.path.exists(f'{PROJECT_DIR}/configs/{args.config_file}.yaml'):
+    if os.path.exists(config_file_path):
         from utils import load_config 
-        config = load_config(f'{PROJECT_DIR}/configs/{args.config_file}.yaml') 
+        config = load_config(config_file_path) 
         args.leftImg8bit_path =  config.get('leftImg8bit_path') 
         args.gtFine_path =  config.get('gtFine_path')
         
         args.path = os.path.join(args.leftImg8bit_path, 'val')
     else:
-        print("Cannot find the config file") 
-    print("--> path", args.path) 
+        print("Cannot find the config file at", config_file_path) 
     
     if args.gpu == "all":
         device_list = range(torch.cuda.device_count())
