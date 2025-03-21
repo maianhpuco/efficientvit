@@ -16,7 +16,10 @@ from tqdm import tqdm
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.dirname(os.path.dirname(BASE_DIR))
-sys.path.append(ROOT_DIR)
+PROJECT_DIR = os.environ.get('PROJECT_DIR')
+sys.path.append(PROJECT_DIR)   
+sys.path.append(ROOT_DIR) 
+
 
 from efficientvit.apps.utils import AverageMeter
 from efficientvit.models.utils import resize
