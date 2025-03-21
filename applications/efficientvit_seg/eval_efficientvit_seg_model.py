@@ -622,7 +622,9 @@ def get_canvas(
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--path", type=str, default="~/dataset/cityscapes/leftImg8bit/val")
+    parser.add_argument("--config_file", type=str, default="cityscapes")
+
+    # parser.add_argument("--path", type=str, default="~/dataset/cityscapes/leftImg8bit/val")
     parser.add_argument("--dataset", type=str, default="cityscapes", choices=["cityscapes", "ade20k"])
     parser.add_argument("--gpu", type=str, default="0")
     parser.add_argument("--batch_size", help="batch size per gpu", type=int, default=1)
@@ -633,11 +635,21 @@ def main():
     parser.add_argument("--save_path", type=str, default=None)
 
     args = parser.parse_args()
+    
+    if os.path.exists(f'./configs/{args.config_file}.yaml'):
+        from utils import load_config 
+        config = load_config(f'./configs/{args.config_file}.yaml') 
+        args.leftImg8bit_path =  config.get('leftImg8bit_path') 
+        args.gtFine_path =  config.get('gtFine_path')
+        args.path = os.path.join(args.leftImg8bit_path, 'val') 
+        
     if args.gpu == "all":
         device_list = range(torch.cuda.device_count())
         args.gpu = ",".join(str(_) for _ in device_list)
+        
     else:
         device_list = [int(_) for _ in args.gpu.split(",")]
+        
     os.environ["CUDA_VISIBLE_DEVICES"] = args.gpu
 
     args.batch_size = args.batch_size * max(len(device_list), 1)

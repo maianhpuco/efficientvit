@@ -22,3 +22,6 @@ assets/export_models/
 applications/efficientvit_gazesam/models/pytorch
 applications/efficientvit_gazesam/models/onnx
 applications/efficientvit_gazesam/models/tensorrt
+
+checkpoints/* 
+!checkpoints/.gitkeep 
