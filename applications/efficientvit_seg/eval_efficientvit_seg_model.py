@@ -634,13 +634,12 @@ def main():
     parser.add_argument("-j", "--workers", help="number of workers", type=int, default=4)
     parser.add_argument("--crop_size", type=int, default=1024)
     parser.add_argument("--model", type=str)
-    parser.add_argument("--weight_url", type=str, default=None)
-    parser.add_argument("--save_path", type=str, default=None)
+    # parser.add_argument("--weight_url", type=str, default=None)
+    # parser.add_argument("--save_path", type=str, default=None)
 
     args = parser.parse_args()
     print("PROJECT DIR", PROJECT_DIR)
     config_file_path = os.path.join(PROJECT_DIR, f'configs/{args.config_file}.yaml') 
-    
     if os.path.exists(config_file_path):
         from utils import load_config 
         config = load_config(config_file_path) 
@@ -648,6 +647,10 @@ def main():
         args.gtFine_path =  config.get('gtFine_path')
         
         args.path = os.path.join(args.leftImg8bit_path, 'val')
+        
+        args.weight_url = config.get('weight_url') 
+        args.save_path = config.get('save_path') 
+        
     else:
         print("Cannot find the config file at", config_file_path) 
     

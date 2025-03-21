@@ -1,3 +1,4 @@
 leftImg8bit_path: /project/hnguyen2/mvu9/cityscapes/leftImg8bit/
 gtFine_path: /project/hnguyen2/mvu9/cityscapes/gtFine/
- 
+weight_url: /project/hnguyen2/mvu9/cityscapes_checkpoints/
+save_path: /project/hnguyen2/mvu9/cityscapes_temp_result/
