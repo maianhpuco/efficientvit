@@ -654,7 +654,7 @@ def main():
 
     args.batch_size = args.batch_size * max(len(device_list), 1)
 
-    args.path = os.path.expanduser(args.path)
+    # args.path = os.path.expanduser(args.path)
     if args.dataset == "cityscapes":
         dataset = CityscapesDataset(args.path, (args.crop_size, args.crop_size * 2))
     elif args.dataset == "ade20k":
