@@ -648,7 +648,8 @@ def main():
         
         args.path = os.path.join(args.leftImg8bit_path, 'val')
         
-        args.weight_url = os.path.join(config.get('weight_url'), args.model + '.pt') 
+        model_file_name = args.model.replace("-", "_")
+        args.weight_url = os.path.join(config.get('weight_url'), model_file_name + '.pt') 
         print(args.weight_url)
         args.save_path = config.get('save_path') 
         
