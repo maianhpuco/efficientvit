@@ -642,7 +642,7 @@ def main():
         args.leftImg8bit_path =  config.get('leftImg8bit_path') 
         args.gtFine_path =  config.get('gtFine_path')
         args.path = os.path.join(args.leftImg8bit_path, 'val') 
-        
+    print("--> path", args.path) 
     if args.gpu == "all":
         device_list = range(torch.cuda.device_count())
         args.gpu = ",".join(str(_) for _ in device_list)
