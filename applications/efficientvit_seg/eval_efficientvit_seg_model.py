@@ -639,13 +639,16 @@ def main():
 
     args = parser.parse_args()
     
-    if os.path.exists(f'/configs/{args.config_file}.yaml'):
+    if os.path.exists(f'{PROJECT_DIR}/configs/{args.config_file}.yaml'):
         from utils import load_config 
-        config = load_config(f'./configs/{args.config_file}.yaml') 
+        config = load_config(f'{PROJECT_DIR}/configs/{args.config_file}.yaml') 
         args.leftImg8bit_path =  config.get('leftImg8bit_path') 
         args.gtFine_path =  config.get('gtFine_path')
-        args.path = os.path.join(args.leftImg8bit_path, 'val') 
+        
+        args.path = os.path.join(args.leftImg8bit_path, 'val')
+         
     print("--> path", args.path) 
+    
     if args.gpu == "all":
         device_list = range(torch.cuda.device_count())
         args.gpu = ",".join(str(_) for _ in device_list)
