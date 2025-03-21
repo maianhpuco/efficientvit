@@ -636,7 +636,7 @@ def main():
 
     args = parser.parse_args()
     
-    if os.path.exists(f'./configs/{args.config_file}.yaml'):
+    if os.path.exists(f'/configs/{args.config_file}.yaml'):
         from utils import load_config 
         config = load_config(f'./configs/{args.config_file}.yaml') 
         args.leftImg8bit_path =  config.get('leftImg8bit_path') 
