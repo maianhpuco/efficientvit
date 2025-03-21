@@ -638,6 +638,7 @@ def main():
     parser.add_argument("--save_path", type=str, default=None)
 
     args = parser.parse_args()
+    print("PROJECT DIR", PROJECT_DIR)
     config_file_path = os.path.join(PROJECT_DIR, f'configs/{args.config_file}.yaml') 
     
     if os.path.exists(config_file_path):
